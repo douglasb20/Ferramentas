@@ -1,0 +1,9 @@
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\Ferramentas.exe.config
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\Ferramentas.exe
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\Ferramentas.pdb
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csprojResolveAssemblyReference.cache
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Form1.resources
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Properties.Resources.resources
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.GenerateResource.Cache
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.exe
+c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
