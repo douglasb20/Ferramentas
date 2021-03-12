@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SuperSocket.WebSocket;
 
 namespace Ferramentas
 {
@@ -17,6 +18,9 @@ namespace Ferramentas
         {
             InitializeComponent();
         }
+
+        public static WebSocketServer server = new WebSocketServer();
+        
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -49,6 +53,7 @@ namespace Ferramentas
         private void Form1_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(50,50,50);
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -75,6 +80,11 @@ namespace Ferramentas
         private void label1_MouseDown(object sender, MouseEventArgs e)
         {
             moverForm();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("TESTE", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

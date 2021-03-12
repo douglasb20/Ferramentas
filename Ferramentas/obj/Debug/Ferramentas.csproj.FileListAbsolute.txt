@@ -7,3 +7,12 @@ c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj
 c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.GenerateResource.Cache
 c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.exe
 c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\log4net.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.WebSocket.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\log4net.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.xml
