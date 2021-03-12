@@ -43,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.rdLeCheff = new System.Windows.Forms.RadioButton();
+            this.rdLeStore = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,6 +144,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 23);
             this.textBox1.TabIndex = 7;
+            this.textBox1.Text = "localhost";
             // 
             // label4
             // 
@@ -161,6 +164,8 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(149, 23);
             this.textBox2.TabIndex = 9;
+            this.textBox2.Text = "123";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -169,6 +174,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(149, 23);
             this.textBox3.TabIndex = 10;
+            this.textBox3.Text = "postgres";
             // 
             // textBox4
             // 
@@ -177,6 +183,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(149, 23);
             this.textBox4.TabIndex = 11;
+            this.textBox4.Text = "5432";
             // 
             // label5
             // 
@@ -211,12 +218,40 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "USUARIO";
             // 
+            // rdLeCheff
+            // 
+            this.rdLeCheff.AutoSize = true;
+            this.rdLeCheff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdLeCheff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.rdLeCheff.Location = new System.Drawing.Point(377, 53);
+            this.rdLeCheff.Name = "rdLeCheff";
+            this.rdLeCheff.Size = new System.Drawing.Size(84, 24);
+            this.rdLeCheff.TabIndex = 17;
+            this.rdLeCheff.Text = "LeStore";
+            this.rdLeCheff.UseVisualStyleBackColor = true;
+            // 
+            // rdLeStore
+            // 
+            this.rdLeStore.AutoSize = true;
+            this.rdLeStore.Checked = true;
+            this.rdLeStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdLeStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.rdLeStore.Location = new System.Drawing.Point(255, 53);
+            this.rdLeStore.Name = "rdLeStore";
+            this.rdLeStore.Size = new System.Drawing.Size(84, 24);
+            this.rdLeStore.TabIndex = 18;
+            this.rdLeStore.TabStop = true;
+            this.rdLeStore.Text = "LeCheff";
+            this.rdLeStore.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(480, 440);
+            this.Controls.Add(this.rdLeStore);
+            this.Controls.Add(this.rdLeCheff);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -258,6 +293,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton rdLeCheff;
+        private System.Windows.Forms.RadioButton rdLeStore;
     }
 }
 

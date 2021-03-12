@@ -86,5 +86,10 @@ namespace Ferramentas
         {
             MessageBox.Show("TESTE", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
