@@ -223,7 +223,7 @@
             this.rdLeCheff.AutoSize = true;
             this.rdLeCheff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdLeCheff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rdLeCheff.Location = new System.Drawing.Point(377, 53);
+            this.rdLeCheff.Location = new System.Drawing.Point(377, 52);
             this.rdLeCheff.Name = "rdLeCheff";
             this.rdLeCheff.Size = new System.Drawing.Size(84, 24);
             this.rdLeCheff.TabIndex = 17;
@@ -236,7 +236,7 @@
             this.rdLeStore.Checked = true;
             this.rdLeStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdLeStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rdLeStore.Location = new System.Drawing.Point(255, 53);
+            this.rdLeStore.Location = new System.Drawing.Point(255, 52);
             this.rdLeStore.Name = "rdLeStore";
             this.rdLeStore.Size = new System.Drawing.Size(84, 24);
             this.rdLeStore.TabIndex = 18;
