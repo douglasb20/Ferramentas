@@ -32,21 +32,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btSuspect = new System.Windows.Forms.Button();
+            this.btCest = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHost = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPorta = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.rdLeCheff = new System.Windows.Forms.RadioButton();
             this.rdLeStore = new System.Windows.Forms.RadioButton();
+            this.btFixForn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtServer = new System.Windows.Forms.TextBox();
+            this.btConect = new System.Windows.Forms.Button();
+            this.pnlRP = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
+            this.lblResposta = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.pnlRP.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -101,99 +108,100 @@
             this.panel1.TabIndex = 3;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // button1
+            // btSuspect
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(7, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 31);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Restaurar BD \"Suspect\"";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btSuspect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.btSuspect.Enabled = false;
+            this.btSuspect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.btSuspect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSuspect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSuspect.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btSuspect.Location = new System.Drawing.Point(26, 201);
+            this.btSuspect.Name = "btSuspect";
+            this.btSuspect.Size = new System.Drawing.Size(180, 31);
+            this.btSuspect.TabIndex = 4;
+            this.btSuspect.Text = "Restaurar BD \"Suspect\"";
+            this.btSuspect.UseVisualStyleBackColor = false;
+            this.btSuspect.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btCest
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(7, 144);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 31);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Arrumar CEST";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btCest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.btCest.Enabled = false;
+            this.btCest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.btCest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btCest.Location = new System.Drawing.Point(26, 249);
+            this.btCest.Name = "btCest";
+            this.btCest.Size = new System.Drawing.Size(180, 31);
+            this.btCest.TabIndex = 5;
+            this.btCest.Text = "Arrumar CEST";
+            this.btCest.UseVisualStyleBackColor = false;
+            this.btCest.Click += new System.EventHandler(this.btCest_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(240, 45);
+            this.panel2.Location = new System.Drawing.Point(243, 45);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 350);
             this.panel2.TabIndex = 6;
             // 
-            // textBox1
+            // txtHost
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(285, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "localhost";
+            this.txtHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHost.Location = new System.Drawing.Point(36, 51);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(149, 23);
+            this.txtHost.TabIndex = 1;
+            this.txtHost.Text = "localhost";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(285, 80);
+            this.label4.Location = new System.Drawing.Point(36, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 21);
             this.label4.TabIndex = 8;
             this.label4.Text = "HOST";
             // 
-            // textBox2
+            // txtPass
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(285, 235);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(149, 23);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "123";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(36, 186);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(149, 23);
+            this.txtPass.TabIndex = 4;
+            this.txtPass.Text = "123";
+            this.txtPass.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox3
+            // txtUser
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(285, 190);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(149, 23);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "postgres";
+            this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.Location = new System.Drawing.Point(36, 141);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(149, 23);
+            this.txtUser.TabIndex = 3;
+            this.txtUser.Text = "postgres";
             // 
-            // textBox4
+            // txtPorta
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(285, 145);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(149, 23);
-            this.textBox4.TabIndex = 2;
-            this.textBox4.Text = "5432";
+            this.txtPorta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPorta.Location = new System.Drawing.Point(36, 96);
+            this.txtPorta.Name = "txtPorta";
+            this.txtPorta.Size = new System.Drawing.Size(149, 23);
+            this.txtPorta.TabIndex = 2;
+            this.txtPorta.Text = "5432";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(285, 125);
+            this.label5.Location = new System.Drawing.Point(36, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 21);
             this.label5.TabIndex = 12;
@@ -204,7 +212,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(285, 215);
+            this.label6.Location = new System.Drawing.Point(36, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 21);
             this.label6.TabIndex = 13;
@@ -215,7 +223,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(285, 170);
+            this.label7.Location = new System.Drawing.Point(36, 121);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 21);
             this.label7.TabIndex = 14;
@@ -226,7 +234,7 @@
             this.rdLeCheff.AutoSize = true;
             this.rdLeCheff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdLeCheff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rdLeCheff.Location = new System.Drawing.Point(377, 52);
+            this.rdLeCheff.Location = new System.Drawing.Point(128, 3);
             this.rdLeCheff.Name = "rdLeCheff";
             this.rdLeCheff.Size = new System.Drawing.Size(84, 24);
             this.rdLeCheff.TabIndex = 17;
@@ -239,7 +247,7 @@
             this.rdLeStore.Checked = true;
             this.rdLeStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdLeStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rdLeStore.Location = new System.Drawing.Point(255, 52);
+            this.rdLeStore.Location = new System.Drawing.Point(6, 3);
             this.rdLeStore.Name = "rdLeStore";
             this.rdLeStore.Size = new System.Drawing.Size(84, 24);
             this.rdLeStore.TabIndex = 18;
@@ -247,19 +255,100 @@
             this.rdLeStore.Text = "LeCheff";
             this.rdLeStore.UseVisualStyleBackColor = true;
             // 
+            // btFixForn
+            // 
+            this.btFixForn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.btFixForn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.btFixForn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFixForn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btFixForn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btFixForn.Location = new System.Drawing.Point(21, 231);
+            this.btFixForn.Name = "btFixForn";
+            this.btFixForn.Size = new System.Drawing.Size(180, 31);
+            this.btFixForn.TabIndex = 19;
+            this.btFixForn.Text = "Arrumar ID Fornecedor";
+            this.btFixForn.UseVisualStyleBackColor = false;
+            this.btFixForn.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label8.Location = new System.Drawing.Point(7, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 21);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "SERVIDOR";
+            // 
+            // txtServer
+            // 
+            this.txtServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServer.Location = new System.Drawing.Point(7, 100);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Size = new System.Drawing.Size(227, 23);
+            this.txtServer.TabIndex = 20;
+            this.txtServer.Text = "localhost\\SQL2014";
+            // 
+            // btConect
+            // 
+            this.btConect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btConect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.btConect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btConect.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btConect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btConect.Location = new System.Drawing.Point(7, 129);
+            this.btConect.Name = "btConect";
+            this.btConect.Size = new System.Drawing.Size(107, 31);
+            this.btConect.TabIndex = 22;
+            this.btConect.Text = "Conectar";
+            this.btConect.UseVisualStyleBackColor = false;
+            this.btConect.Click += new System.EventHandler(this.btConect_Click);
+            // 
+            // pnlRP
+            // 
+            this.pnlRP.Controls.Add(this.rdLeStore);
+            this.pnlRP.Controls.Add(this.txtHost);
+            this.pnlRP.Controls.Add(this.label4);
+            this.pnlRP.Controls.Add(this.txtPass);
+            this.pnlRP.Controls.Add(this.btFixForn);
+            this.pnlRP.Controls.Add(this.txtUser);
+            this.pnlRP.Controls.Add(this.txtPorta);
+            this.pnlRP.Controls.Add(this.rdLeCheff);
+            this.pnlRP.Controls.Add(this.label5);
+            this.pnlRP.Controls.Add(this.label7);
+            this.pnlRP.Controls.Add(this.label6);
+            this.pnlRP.Location = new System.Drawing.Point(252, 46);
+            this.pnlRP.Name = "pnlRP";
+            this.pnlRP.Size = new System.Drawing.Size(216, 312);
+            this.pnlRP.TabIndex = 23;
+            // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button3.Enabled = false;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(270, 280);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(120, 129);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 31);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Arrumar ID Fornecedor";
+            this.button3.Size = new System.Drawing.Size(108, 31);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Desconectar";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // lblResposta
+            // 
+            this.lblResposta.AutoSize = true;
+            this.lblResposta.Font = new System.Drawing.Font("Segoe WP", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResposta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblResposta.Location = new System.Drawing.Point(7, 417);
+            this.lblResposta.Name = "lblResposta";
+            this.lblResposta.Size = new System.Drawing.Size(68, 17);
+            this.lblResposta.TabIndex = 25;
+            this.lblResposta.Text = "SERVIDOR";
             // 
             // Form1
             // 
@@ -267,20 +356,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(480, 440);
+            this.Controls.Add(this.lblResposta);
+            this.Controls.Add(this.txtServer);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.rdLeStore);
-            this.Controls.Add(this.rdLeCheff);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pnlRP);
+            this.Controls.Add(this.btConect);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btCest);
+            this.Controls.Add(this.btSuspect);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -289,6 +373,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlRP.ResumeLayout(false);
+            this.pnlRP.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,20 +386,26 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btSuspect;
+        private System.Windows.Forms.Button btCest;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtHost;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtPorta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton rdLeCheff;
         private System.Windows.Forms.RadioButton rdLeStore;
+        private System.Windows.Forms.Button btFixForn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtServer;
+        private System.Windows.Forms.Button btConect;
+        private System.Windows.Forms.Panel pnlRP;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lblResposta;
     }
 }
 
