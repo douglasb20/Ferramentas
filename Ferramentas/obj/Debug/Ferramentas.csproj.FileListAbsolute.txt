@@ -16,3 +16,6 @@ C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin
 C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.xml
 C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.xml
 C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.xml
+C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\Ferramentas.exe.config
+C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.exe
+C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
