@@ -111,12 +111,11 @@
             // btSuspect
             // 
             this.btSuspect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
-            this.btSuspect.Enabled = false;
             this.btSuspect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
             this.btSuspect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSuspect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSuspect.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btSuspect.Location = new System.Drawing.Point(26, 201);
+            this.btSuspect.Location = new System.Drawing.Point(26, 355);
             this.btSuspect.Name = "btSuspect";
             this.btSuspect.Size = new System.Drawing.Size(180, 31);
             this.btSuspect.TabIndex = 4;
@@ -132,7 +131,7 @@
             this.btCest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btCest.Location = new System.Drawing.Point(26, 249);
+            this.btCest.Location = new System.Drawing.Point(26, 187);
             this.btCest.Name = "btCest";
             this.btCest.Size = new System.Drawing.Size(180, 31);
             this.btCest.TabIndex = 5;
@@ -349,6 +348,7 @@
             this.lblResposta.Size = new System.Drawing.Size(68, 17);
             this.lblResposta.TabIndex = 25;
             this.lblResposta.Text = "SERVIDOR";
+            this.lblResposta.Visible = false;
             // 
             // Form1
             // 

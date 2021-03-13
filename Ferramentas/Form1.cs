@@ -93,44 +93,64 @@ namespace Ferramentas
         {
             try
             {
-                btSuspect.Enabled = false;
-                //sqlserver.Close();
-                setConnVR(txtServer.Text);
-                SqlCommand cmd = sqlserver.CreateCommand();
+                var pergunta = "Deseja fazer correção do banco de dados em modo Suspect?/Emergency?\n\nTenha certeza que as permissões do banco estejam corretas, senão essa ação não funcionará corretamente.";
+                if (MessageBox.Show(pergunta, "Ferramentas", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
 
-                lblResposta.Visible = true;
+                    btSuspect.Enabled = false;
+                    sqlserver.Close();
+                    setConnVR(txtServer.Text);
+                    SqlCommand cmd = sqlserver.CreateCommand();
 
-                // Alterando para Master
-                lblResposta.Text = "Colocando database em modo de emergência";
-                cmd.CommandText = "USE Master";
-                cmd.();
+                    lblResposta.Visible = true;
 
-                cmd = sqlserver.CreateCommand();
+                    // Alterando para Master
+                    lblResposta.Text = "Colocando database em modo de emergência";
+                    cmd.CommandText = "USE Master";
+                    //cmd.();
 
-                // Coloca o database em modo de emergência
-                lblResposta.Text = "Colocando database em modo de emergência";
-                cmd.CommandText = "ALTER DATABASE ETrade SET EMERGENCY";
-                cmd.ExecuteNonQuery();
-                /*
-                // Altera o database para SINGLE_USER, ou seja, só um usuário pode estar conectado
-                lblResposta.Text = "Alterando database para SINGLE_USER, ou seja, só um usuário pode estar conectado";
-                cmd.CommandText = "ALTER DATABASE ETrade SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
-                cmd.ExecuteNonQuery();
+                    cmd = sqlserver.CreateCommand();
 
-                // Realiza o comando para reparo do databaseRestarta o status do database
-                cmd.CommandText = "DBCC CHECKDB('ETrade', REPAIR_ALLOW_DATA_LOSS) WITH NO_INFOMSGS, ALL_ERRORMSGS";
-                cmd.ExecuteNonQuery();
+                    // Coloca o database em modo de emergência
+                    lblResposta.Text = "Colocando database em modo de emergência";
+                    cmd.CommandText = "ALTER DATABASE [ETrade] SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
+                    cmd.ExecuteNonQuery();
 
-                // Volta a base de dados para multiplos usuáriosRestarta o status do database
-                cmd.CommandText = "ALTER DATABASE ETrade SET MULTI_USER";
-                cmd.ExecuteNonQuery();
+                    cmd.CommandText = "ALTER DATABASE [ETrade] SET EMERGENCY";
+                    cmd.ExecuteNonQuery();
 
-                // Restarta o status do database
-                cmd.CommandText = "EXEC sp_resetstatus 'ETrade'";
-                cmd.ExecuteNonQuery();*/
+                    cmd.CommandText = "DBCC CHECKDB('ETrade', REPAIR_ALLOW_DATA_LOSS) WITH NO_INFOMSGS, ALL_ERRORMSGS";
+                    cmd.ExecuteNonQuery();
 
-                btSuspect.Enabled = true;
-                lblResposta.Visible = false;
+                    cmd.CommandText = "ALTER DATABASE ETrade SET MULTI_USER";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "EXEC sp_resetstatus 'ETrade'";
+                    cmd.ExecuteNonQuery();
+
+                    /*
+                    // Altera o database para SINGLE_USER, ou seja, só um usuário pode estar conectado
+                    lblResposta.Text = "Alterando database para SINGLE_USER, ou seja, só um usuário pode estar conectado";
+                    cmd.CommandText = "ALTER DATABASE ETrade SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
+                    cmd.ExecuteNonQuery();
+
+                    // Realiza o comando para reparo do databaseRestarta o status do database
+                    cmd.CommandText = "DBCC CHECKDB('ETrade', REPAIR_ALLOW_DATA_LOSS) WITH NO_INFOMSGS, ALL_ERRORMSGS";
+                    cmd.ExecuteNonQuery();
+
+                    // Volta a base de dados para multiplos usuáriosRestarta o status do database
+                    cmd.CommandText = "ALTER DATABASE ETrade SET MULTI_USER";
+                    cmd.ExecuteNonQuery();
+
+                    // Restarta o status do database
+                    cmd.CommandText = "EXEC sp_resetstatus 'ETrade'";
+                    cmd.ExecuteNonQuery();*/
+
+                    btSuspect.Enabled = true;
+                    lblResposta.Visible = false;
+
+                    MessageBox.Show("Executado com sucesso.\nVerifique se o banco de dados foi corrigido.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
             }
             catch(Exception err)
             {
@@ -152,7 +172,7 @@ namespace Ferramentas
             {
                 
                 DataTable qry = new DataTable();
-                sqlserver = new SqlConnection(@"Data Source=" + host + ";Initial Catalog="+banco+"; User ID=sa;Password=senha");
+                sqlserver = new SqlConnection(@"Data Source=" + host + ";Initial Catalog=; User ID=sa;Password=senha");
 
                 /*SqlCommand cmd = new SqlCommand(@"IF EXISTS(
                   SELECT 1 FROM INFORMATION_SCHEMA.TABLES 
@@ -256,7 +276,6 @@ namespace Ferramentas
                 pnlRP.Enabled = true;
                 txtServer.Enabled = true;
 
-                btSuspect.Enabled = false;
                 btCest.Enabled = false;
                 sqlserver.Close();
 
@@ -269,7 +288,55 @@ namespace Ferramentas
 
         private void btCest_Click(object sender, EventArgs e)
         {
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                DataTable tabela = new DataTable();
+                string comando = "";
 
+                Object aTabela = "";
+
+                cmd.CommandText = "Use ETrade";
+                cmd.ExecuteNonQuery();
+
+                comando += "select schema_name(t.schema_id) as schema_name, t.name as table_name, t.create_date, t.modify_date ";
+                comando += "from sys.tables t ";
+                comando += "where t.name = 'Produto' ";
+                comando += "order by schema_name, table_name ";
+
+                SqlDataAdapter da = new SqlDataAdapter(comando, sqlserver);
+                da.Fill(tabela);
+                
+                if(tabela.Rows.Count == 0)
+                {
+                    comando += "select schema_name(t.schema_id) as schema_name, t.name as table_name, t.create_date, t.modify_date ";
+                    comando += "from sys.tables t ";
+                    comando += "where t.name = 'Produtos' ";
+                    comando += "order by schema_name, table_name ";
+
+                    da = new SqlDataAdapter(comando, sqlserver);
+                    da.Fill(tabela);
+
+                    aTabela = tabela.Rows[0]["table_name"];
+                }else
+                {
+                    aTabela = tabela.Rows[0]["table_name"];
+                }
+
+
+                cmd.CommandText = "update " + aTabela + " set CEST= '00000000-0000-0000-0000-000000000000'";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "delete from cest where codigo='' or ncm='' ";
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + err.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
