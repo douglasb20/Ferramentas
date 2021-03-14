@@ -21,7 +21,6 @@ C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\F
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\Ferramentas.exe
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\Ferramentas.pdb
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csprojResolveAssemblyReference.cache
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Form1.resources
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Properties.Resources.resources
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.GenerateResource.Cache
