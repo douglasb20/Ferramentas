@@ -21,15 +21,6 @@ C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\F
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\Ferramentas.exe
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\Ferramentas.pdb
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\log4net.dll
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.dll
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.dll
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.dll
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.WebSocket.dll
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\log4net.xml
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.xml
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.xml
-C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csprojResolveAssemblyReference.cache
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Form1.resources
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Properties.Resources.resources
@@ -47,3 +38,4 @@ C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\F
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\System.ValueTuple.xml
+C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.frmAcao.resources

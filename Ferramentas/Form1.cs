@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SuperSocket.WebSocket;
 using Npgsql;
+using System.ServiceProcess;
 
 namespace Ferramentas
 {
@@ -21,12 +16,12 @@ namespace Ferramentas
             InitializeComponent();
         }
 
-        public static WebSocketServer server = new WebSocketServer();
         public static NpgsqlConnection npg;
         public static SqlConnection sqlserver = new SqlConnection();
         public static int status;
         public static string msgError;
-        
+
+        public object ServiceController { get; private set; }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -59,7 +54,16 @@ namespace Ferramentas
         private void Form1_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(50,50,50);
-           
+
+            try
+            {
+                checkServiceFirst("postgresql");
+            }catch(Exception err)
+            {
+                pnlRP.Enabled = false;
+                erroMsg(err,"1");
+
+            }
 
         }
 
@@ -93,6 +97,7 @@ namespace Ferramentas
         {
             try
             {
+                checkServiceFirst("MSSQL$" + nomeServico(txtServer.Text));
                 var pergunta = "Deseja fazer correção do banco de dados em modo Suspect?/Emergency?\n\nTenha certeza que as permissões do banco estejam corretas, senão essa ação não funcionará corretamente.";
                 if (MessageBox.Show(pergunta, "Ferramentas", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -102,17 +107,14 @@ namespace Ferramentas
                     setConnVR(txtServer.Text);
                     SqlCommand cmd = sqlserver.CreateCommand();
 
-                    lblResposta.Visible = true;
 
                     // Alterando para Master
-                    lblResposta.Text = "Colocando database em modo de emergência";
                     cmd.CommandText = "USE Master";
                     //cmd.();
 
                     cmd = sqlserver.CreateCommand();
 
-                    // Coloca o database em modo de emergência
-                    lblResposta.Text = "Colocando database em modo de emergência";
+
                     cmd.CommandText = "ALTER DATABASE [ETrade] SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
                     cmd.ExecuteNonQuery();
 
@@ -128,35 +130,15 @@ namespace Ferramentas
                     cmd.CommandText = "EXEC sp_resetstatus 'ETrade'";
                     cmd.ExecuteNonQuery();
 
-                    /*
-                    // Altera o database para SINGLE_USER, ou seja, só um usuário pode estar conectado
-                    lblResposta.Text = "Alterando database para SINGLE_USER, ou seja, só um usuário pode estar conectado";
-                    cmd.CommandText = "ALTER DATABASE ETrade SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
-                    cmd.ExecuteNonQuery();
-
-                    // Realiza o comando para reparo do databaseRestarta o status do database
-                    cmd.CommandText = "DBCC CHECKDB('ETrade', REPAIR_ALLOW_DATA_LOSS) WITH NO_INFOMSGS, ALL_ERRORMSGS";
-                    cmd.ExecuteNonQuery();
-
-                    // Volta a base de dados para multiplos usuáriosRestarta o status do database
-                    cmd.CommandText = "ALTER DATABASE ETrade SET MULTI_USER";
-                    cmd.ExecuteNonQuery();
-
-                    // Restarta o status do database
-                    cmd.CommandText = "EXEC sp_resetstatus 'ETrade'";
-                    cmd.ExecuteNonQuery();*/
-
                     btSuspect.Enabled = true;
-                    lblResposta.Visible = false;
 
                     MessageBox.Show("Executado com sucesso.\nVerifique se o banco de dados foi corrigido.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
             catch(Exception err)
             {
-                MessageBox.Show("Erro ao arrumar banco.\nMotivo: " + err.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                erroMsg(err);
                 btSuspect.Enabled = true;
-                lblResposta.Visible = false;
             }
         }
 
@@ -173,23 +155,8 @@ namespace Ferramentas
                 
                 DataTable qry = new DataTable();
                 sqlserver = new SqlConnection(@"Data Source=" + host + ";Initial Catalog=; User ID=sa;Password=senha");
-
-                /*SqlCommand cmd = new SqlCommand(@"IF EXISTS(
-                  SELECT 1 FROM INFORMATION_SCHEMA.TABLES 
-                  WHERE TABLE_NAME = @table) 
-                  SELECT 1 ELSE SELECT 0", connVR);*/
                 sqlserver.Open();
                 return true;
-                /*cmd.Parameters.Add("@table", SqlDbType.NVarChar).Value = "Produtos";
-                int exists = (int)cmd.ExecuteScalar();
-                if (exists == 1) tabela = "Produtos";
-                else tabela = "Produto";
-
-                SqlDataAdapter da = new SqlDataAdapter("Select * from " + tabela + " where codigo_fabricante1='2'", connVR);
-                da.Fill(qry);
-
-
-                //MessageBox.Show(qry.Rows[0]["Nome"].ToString().Trim(), "Migrador de Banco", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);*/
 
             }
             catch (Exception err)
@@ -197,6 +164,20 @@ namespace Ferramentas
                 msgError = err.Message;
                 return false;
             }
+        }
+        public string nomeServico(string texto)
+        {
+            string[] separado;
+
+            if (texto.Contains(",")){
+                separado = texto.Split(',');
+                texto = separado[0];
+            }
+
+            separado = texto.Split('\\');
+            texto = separado[1];
+
+            return texto;
         }
         public void setConnect(string host, int porta, string user, string pass, string banco)
         {
@@ -225,6 +206,7 @@ namespace Ferramentas
 
             try
             {
+                checkServiceFirst("postgresql");
                 setConnect(txtHost.Text, int.Parse( txtPorta.Text ), txtUser.Text, txtPass.Text, banco);
                 DataTable id = new DataTable();
 
@@ -241,7 +223,7 @@ namespace Ferramentas
             }
             catch(Exception err)
             {
-                MessageBox.Show("Erro no comando.\nMotivo: " + err.Message,"Ferramentas",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                erroMsg(err);
             }
             
 
@@ -249,22 +231,35 @@ namespace Ferramentas
 
         private void btConect_Click(object sender, EventArgs e)
         {
-            if (setConnVR(txtServer.Text))
-            {
 
-                pnlRP.Enabled = false;
-                txtServer.Enabled = false;
 
-                btSuspect.Enabled = true;
-                btCest.Enabled = true;
-                button3.Enabled = true;
-                btConect.Enabled = false;
-            }
-            else
+            try
             {
-                MessageBox.Show(msgError, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                button3.Enabled = false;
-                btConect.Enabled = true;
+                checkServiceFirst("MSSQL$" + nomeServico(txtServer.Text));
+                if (setConnVR(txtServer.Text))
+                {
+
+                    pnlRP.Enabled = false;
+                    txtServer.Enabled = false;
+
+                    btSuspect.Enabled = true;
+                    btCest.Enabled = true;
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                    btConect.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show(msgError, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    button3.Enabled = false;
+                    btConect.Enabled = true;
+                }
+
+            }catch(Exception err)
+            {
+                erroMsg(err);
             }
         }
 
@@ -273,17 +268,132 @@ namespace Ferramentas
             if (sqlserver.State != ConnectionState.Closed)
             {
 
-                pnlRP.Enabled = true;
-                txtServer.Enabled = true;
+                try
+                {
+                    sqlserver.Close();
+                    checkServiceFirst("postgresql");
 
-                btCest.Enabled = false;
-                sqlserver.Close();
+                    pnlRP.Enabled = true;
+                }
+                catch(Exception err)
+                {
+                    
+                }
+                finally
+                {
+                    txtServer.Enabled = true;
 
-                button3.Enabled = false;
-                btConect.Enabled = true;
+                    btCest.Enabled = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    btConect.Enabled = true;
+
+                }
 
             }
 
+        }
+        public void checkServiceFirst(string svr)
+        {
+            ServiceController[] services = System.ServiceProcess.ServiceController.GetServices();
+            foreach (ServiceController sv in services)
+            {
+                if (sv.ServiceName.Length >= 10)
+                {
+                    if (sv.ServiceName.Contains(svr))
+                    {
+                        
+                        if (sv.Status.ToString() != "Running") throw new Exception("Serviço " + sv.DisplayName + " não está em execução.");
+                    }
+                }
+            }
+        }
+        public void retiraVinculo(string sequencia)
+        {
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "USE ETrade";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "UPDATE MOVIMENTO SET NFCE_IDENTIFICADOR='00000000-0000-0000-0000-000000000000' WHERE sequencia='" + sequencia+"'";
+                cmd.ExecuteNonQuery();
+
+                msgSucesso();
+
+            }
+            catch (Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+        public void mudaNfce(string sequencia, int tipo)
+        {
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "USE ETrade";
+                cmd.ExecuteNonQuery();
+
+                if(tipo == 0)
+                {
+                    cmd.CommandText = "update movimento_nfe set inutilizada=1 where movimento__ide IN( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
+                    cmd.ExecuteNonQuery();
+
+                }else
+                {
+                    cmd.CommandText = "update movimento_nfe set codigo_status=100 where movimento__ide IN( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
+                    cmd.ExecuteNonQuery();
+                }
+
+
+                msgSucesso();
+
+            }
+            catch (Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+        public void erroDecimais(string sequencia)
+        {
+            
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "USE ETrade";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "update Movimento_Produto set Valor_Total = Qtde* Valor_Unit where Movimento__Ide in( SELECT IDE FROM Movimento WHERE Sequencia='"+sequencia+"')";
+                cmd.ExecuteNonQuery();
+
+                msgSucesso();
+
+            }
+            catch(Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+
+        public void msgSucesso()
+        {
+            MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        public void erroMsg(Exception mesage, string tipo = null)
+        {
+            if(tipo == "1")
+            {
+
+                MessageBox.Show(mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }else
+            {
+
+                MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btCest_Click(object sender, EventArgs e)
@@ -330,13 +440,36 @@ namespace Ferramentas
                 cmd.CommandText = "delete from cest where codigo='' or ncm='' ";
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                msgSucesso();
             }
             catch(Exception err)
             {
-                MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + err.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                erroMsg(err);
             }
             
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            frmAcao f2 = new frmAcao(1);
+            f2.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmAcao f2 = new frmAcao(2);
+            f2.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmAcao f2 = new frmAcao(3);
+            f2.ShowDialog();
+        }
+
+        private void txtServer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
