@@ -181,7 +181,6 @@
             this.txtPass.Size = new System.Drawing.Size(149, 23);
             this.txtPass.TabIndex = 4;
             this.txtPass.Text = "123";
-            this.txtPass.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtUser
             // 

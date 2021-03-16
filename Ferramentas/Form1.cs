@@ -19,12 +19,10 @@ namespace Ferramentas
             InitializeComponent();
         }
 
-        public static NpgsqlConnection npg;
         public static SqlConnection sqlserver = new SqlConnection();
+        public static NpgsqlConnection npg;
         public static int status;
         public static string msgError;
-
-        public object ServiceController { get; private set; }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -138,11 +136,6 @@ namespace Ferramentas
                 erroMsg(err);
                 btSuspect.Enabled = true;
             }
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
         
         private void button3_Click(object sender, EventArgs e)
@@ -400,7 +393,7 @@ namespace Ferramentas
         }
         public void checkServiceFirst(string svr)
         {
-            ServiceController[] services = System.ServiceProcess.ServiceController.GetServices();
+            ServiceController[] services = ServiceController.GetServices();
             foreach (ServiceController sv in services)
             {
                 if (sv.ServiceName.Length >= 10)
