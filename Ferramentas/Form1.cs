@@ -6,6 +6,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Npgsql;
 using System.ServiceProcess;
+using System.Configuration;
+using System.IO;
+using System.Reflection;
 
 namespace Ferramentas
 {
@@ -54,6 +57,7 @@ namespace Ferramentas
         private void Form1_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(50,50,50);
+            lblVersao.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
             try
             {
@@ -80,12 +84,6 @@ namespace Ferramentas
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             moverForm();
-        }
-
-        public void moverForm()
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         private void label1_MouseDown(object sender, MouseEventArgs e)
@@ -146,57 +144,7 @@ namespace Ferramentas
         {
 
         }
-        public bool setConnVR(string host, string banco = "ETrade")
-        {
-            msgError = "";
-
-            try
-            {
-                
-                DataTable qry = new DataTable();
-                sqlserver = new SqlConnection(@"Data Source=" + host + ";Initial Catalog=; User ID=sa;Password=senha");
-                sqlserver.Open();
-                return true;
-
-            }
-            catch (Exception err)
-            {
-                msgError = err.Message;
-                return false;
-            }
-        }
-        public string nomeServico(string texto)
-        {
-            string[] separado;
-
-            if (texto.Contains(",")){
-                separado = texto.Split(',');
-                texto = separado[0];
-            }
-
-            separado = texto.Split('\\');
-            texto = separado[1];
-
-            return texto;
-        }
-        public void setConnect(string host, int porta, string user, string pass, string banco)
-        {
-            status = 1;
-            msgError = "";
-            try
-            {
-                npg = new NpgsqlConnection("Server=" + host + ";Port=" + porta + ";User Id=" + user + ";Password=" + pass + ";Database=" + banco + ";");
-                npg.Open();
-
-            }
-            catch (Exception err)
-            {
-                msgError = err.Message;
-                status = 0;
-            }
-
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
             var banco = "";
@@ -231,8 +179,6 @@ namespace Ferramentas
 
         private void btConect_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 checkServiceFirst("MSSQL$" + nomeServico(txtServer.Text));
@@ -248,6 +194,7 @@ namespace Ferramentas
                     button2.Enabled = true;
                     button3.Enabled = true;
                     button4.Enabled = true;
+                    button5.Enabled = true;
                     btConect.Enabled = false;
                 }
                 else
@@ -288,6 +235,7 @@ namespace Ferramentas
                     button2.Enabled = false;
                     button3.Enabled = false;
                     button4.Enabled = false;
+                    button5.Enabled = false;
                     btConect.Enabled = true;
 
                 }
@@ -295,107 +243,8 @@ namespace Ferramentas
             }
 
         }
-        public void checkServiceFirst(string svr)
-        {
-            ServiceController[] services = System.ServiceProcess.ServiceController.GetServices();
-            foreach (ServiceController sv in services)
-            {
-                if (sv.ServiceName.Length >= 10)
-                {
-                    if (sv.ServiceName.Contains(svr))
-                    {
-                        
-                        if (sv.Status.ToString() != "Running") throw new Exception("Serviço " + sv.DisplayName + " não está em execução.");
-                    }
-                }
-            }
-        }
-        public void retiraVinculo(string sequencia)
-        {
-            try
-            {
-                SqlCommand cmd = sqlserver.CreateCommand();
-                cmd.CommandText = "USE ETrade";
-                cmd.ExecuteNonQuery();
 
-                cmd.CommandText = "UPDATE MOVIMENTO SET NFCE_IDENTIFICADOR='00000000-0000-0000-0000-000000000000' WHERE sequencia='" + sequencia+"'";
-                cmd.ExecuteNonQuery();
-
-                msgSucesso();
-
-            }
-            catch (Exception err)
-            {
-                erroMsg(err);
-            }
-        }
-        public void mudaNfce(string sequencia, int tipo)
-        {
-            try
-            {
-                SqlCommand cmd = sqlserver.CreateCommand();
-                cmd.CommandText = "USE ETrade";
-                cmd.ExecuteNonQuery();
-
-                if(tipo == 0)
-                {
-                    cmd.CommandText = "update movimento_nfe set inutilizada=1 where movimento__ide IN( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
-                    cmd.ExecuteNonQuery();
-
-                }else
-                {
-                    cmd.CommandText = "update movimento_nfe set codigo_status=100 where movimento__ide IN( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
-                    cmd.ExecuteNonQuery();
-                }
-
-
-                msgSucesso();
-
-            }
-            catch (Exception err)
-            {
-                erroMsg(err);
-            }
-        }
-        public void erroDecimais(string sequencia)
-        {
-            
-            try
-            {
-                SqlCommand cmd = sqlserver.CreateCommand();
-                cmd.CommandText = "USE ETrade";
-                cmd.ExecuteNonQuery();
-
-                cmd.CommandText = "update Movimento_Produto set Valor_Total = Qtde* Valor_Unit where Movimento__Ide in( SELECT IDE FROM Movimento WHERE Sequencia='"+sequencia+"')";
-                cmd.ExecuteNonQuery();
-
-                msgSucesso();
-
-            }
-            catch(Exception err)
-            {
-                erroMsg(err);
-            }
-        }
-
-        public void msgSucesso()
-        {
-            MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        }
-
-        public void erroMsg(Exception mesage, string tipo = null)
-        {
-            if(tipo == "1")
-            {
-
-                MessageBox.Show(mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }else
-            {
-
-                MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        
         private void btCest_Click(object sender, EventArgs e)
         {
             try
@@ -466,10 +315,257 @@ namespace Ferramentas
             frmAcao f2 = new frmAcao(3);
             f2.ShowDialog();
         }
-
-        private void txtServer_TextChanged(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+                frmAcao f2 = new frmAcao(4);
+                f2.ShowDialog();
+            }catch(Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+
+        // Somente Funções
+        public void moverForm()
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        public void setConnect(string host, int porta, string user, string pass, string banco)
+        {
+            status = 1;
+            msgError = "";
+            try
+            {
+                npg = new NpgsqlConnection("Server=" + host + ";Port=" + porta + ";User Id=" + user + ";Password=" + pass + ";Database=" + banco + ";");
+                npg.Open();
+
+            }
+            catch (Exception err)
+            {
+                msgError = err.Message;
+                status = 0;
+            }
 
         }
+        public void zeraReg()
+        {
+            try
+            {
+
+                // ExportImagesFromDatabase();
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "Use ETrade";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = @"update Configuracao set valor='' where config='lib' ";
+                //cmd.CommandText = @"update Configuracao set valor='' where config='lib' or config='reg' ";
+                cmd.ExecuteNonQuery();
+
+                //if( MessageBox.Show("Abra o sistema e quando tiver totalmente aberto, aperte OK para adicionar a imagem na filial.\n\nClicando em Cancelar finaliza a operação sem adicionar a imagem, porem fica um backup da imagem na pasta C:\\temp\\temp.jpg. \n\nSistema abriu totalmente? ", "Ferramentas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                //{
+                //    cmd.CommandText = @"UPDATE Filial_Foto SET Foto = (SELECT MyImage.* from Openrowset(Bulk 'C:\temp\temp.jpg', Single_Blob) MyImage) where Filial = 1";
+                //    cmd.ExecuteScalar();
+
+                //}
+
+                msgSucesso();
+            }
+            catch (Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+        public void retiraVinculo(string sequencia)
+        {
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "USE ETrade";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "UPDATE MOVIMENTO SET NFCE_IDENTIFICADOR='00000000-0000-0000-0000-000000000000' WHERE sequencia='" + sequencia + "'";
+                cmd.ExecuteNonQuery();
+
+                msgSucesso();
+
+            }
+            catch (Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+        public void checkServiceFirst(string svr)
+        {
+            ServiceController[] services = System.ServiceProcess.ServiceController.GetServices();
+            foreach (ServiceController sv in services)
+            {
+                if (sv.ServiceName.Length >= 10)
+                {
+                    if (sv.ServiceName.Contains(svr))
+                    {
+
+                        if (sv.Status.ToString() != "Running") throw new Exception("Serviço " + sv.DisplayName + " não está em execução.");
+                    }
+                }
+            }
+        }
+        public bool setConnVR(string host, string banco = "ETrade")
+        {
+            msgError = "";
+
+            try
+            {
+
+                DataTable qry = new DataTable();
+                sqlserver = new SqlConnection(@"Data Source=" + host + ";Initial Catalog=; User ID=sa;Password=senha");
+                sqlserver.Open();
+                return true;
+
+            }
+            catch (Exception err)
+            {
+                msgError = err.Message;
+                return false;
+            }
+        }
+        public void mudaNfce(string sequencia, int tipo)
+        {
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "USE ETrade";
+                cmd.ExecuteNonQuery();
+
+                if (tipo == 0)
+                {
+                    cmd.CommandText = "update movimento_nfe set inutilizada=1 where movimento__ide IN( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
+                    cmd.ExecuteNonQuery();
+
+                }
+                else
+                {
+                    cmd.CommandText = "update movimento_nfe set codigo_status=100 where movimento__ide IN( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
+                    cmd.ExecuteNonQuery();
+                }
+
+
+                msgSucesso();
+
+            }
+            catch (Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+        public string nomeServico(string texto)
+        {
+            string[] separado;
+
+            if (texto.Contains(","))
+            {
+                separado = texto.Split(',');
+                texto = separado[0];
+            }
+
+            separado = texto.Split('\\');
+            texto = separado[1];
+
+            return texto;
+        }
+        public void erroDecimais(string sequencia)
+        {
+
+            try
+            {
+                SqlCommand cmd = sqlserver.CreateCommand();
+                cmd.CommandText = "USE ETrade";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "update Movimento_Produto set Valor_Total = Qtde* Valor_Unit where Movimento__Ide in( SELECT IDE FROM Movimento WHERE Sequencia='" + sequencia + "')";
+                cmd.ExecuteNonQuery();
+
+                msgSucesso();
+
+            }
+            catch (Exception err)
+            {
+                erroMsg(err);
+            }
+        }
+        public void msgSucesso()
+        {
+            MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        public void erroMsg(Exception mesage, string tipo = null)
+        {
+            if (tipo == "1")
+            {
+
+                MessageBox.Show(mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+                MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public DataTable GetImagesFromDatabase(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                throw new NullReferenceException("Parameter query can't be null or empty");
+            }
+
+            SqlCommand cmd = sqlserver.CreateCommand();
+
+            cmd.CommandText = "use ETrade";
+            cmd.ExecuteScalar();
+
+            cmd.CommandText = query;
+
+            DataTable result = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(result);
+
+            return result;
+        }
+        public void ExportImagesFromDatabase()
+        {
+            var exportPath = @"C:\Temp";
+            if (!Directory.Exists(exportPath))
+            {
+                Directory.CreateDirectory(exportPath);
+            }
+            var imagesTable = GetImagesFromDatabase("select * from Filial_Foto");
+            foreach (DataRow row in imagesTable.Rows)
+            {
+                if (row.ItemArray.Length > 0)
+                {
+                    if (row[0] != null)
+                    {
+                        var imageBytes = (byte[])row["Foto"];
+                        if (imageBytes.Length > 0)
+                        {
+                            using (var convertedImage = new Bitmap(new MemoryStream(imageBytes)))
+                            {
+                                var fileName = Path.Combine(exportPath, "temp.jpg");
+                                if (File.Exists(fileName))
+                                {
+                                    File.Delete(fileName);
+                                }
+                                convertedImage.Save(fileName);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+       
     }
 }

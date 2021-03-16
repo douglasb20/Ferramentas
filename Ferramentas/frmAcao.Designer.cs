@@ -31,7 +31,7 @@
             this.btOk = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.txtSeq = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSeq = new System.Windows.Forms.Label();
             this.cboTipo = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMuda = new System.Windows.Forms.Label();
@@ -72,17 +72,18 @@
             this.txtSeq.Name = "txtSeq";
             this.txtSeq.Size = new System.Drawing.Size(176, 23);
             this.txtSeq.TabIndex = 2;
+            this.txtSeq.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSeq_KeyPress);
             // 
-            // label1
+            // lblSeq
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(10, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Sequencia";
+            this.lblSeq.AutoSize = true;
+            this.lblSeq.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblSeq.Location = new System.Drawing.Point(10, 3);
+            this.lblSeq.Name = "lblSeq";
+            this.lblSeq.Size = new System.Drawing.Size(75, 17);
+            this.lblSeq.TabIndex = 3;
+            this.lblSeq.Text = "Sequencia";
             // 
             // cboTipo
             // 
@@ -103,7 +104,7 @@
             // 
             this.panel1.Controls.Add(this.txtSeq);
             this.panel1.Controls.Add(this.btOk);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblSeq);
             this.panel1.Controls.Add(this.btCancel);
             this.panel1.Location = new System.Drawing.Point(9, 0);
             this.panel1.Name = "panel1";
@@ -158,7 +159,7 @@
         private System.Windows.Forms.Button btOk;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.TextBox txtSeq;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSeq;
         private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblMuda;

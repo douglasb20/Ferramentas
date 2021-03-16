@@ -42,6 +42,16 @@ namespace Ferramentas
                     case 3:
                         objj.retiraVinculo(txtSeq.Text);
                     break;
+                    case 4:
+                        if (txtSeq.Text == "237701")
+                        {
+                            objj.zeraReg();
+                            
+                        }else
+                        {
+                            throw new Exception("Erro na senha");
+                        }
+                    break;
 
                     default:
                     break;
@@ -62,22 +72,43 @@ namespace Ferramentas
         private void frmAcao_Load(object sender, EventArgs e)
         {
             this.Size = new Size(this.Size.Width, 110);
-            if (tipAcao == 2)
-            {
-                cboTipo.Visible = true;
-                cboTipo.SelectedIndex = 0;
 
-                this.Size = new Size(this.Size.Width, 170);
-                panel1.Location = new Point(panel1.Location.X, 55);
-            }else if (tipAcao == 99)
+            switch (tipAcao)
             {
-                txtChave.Visible = true;
-                lblMuda.Text = "Chave de acesso";
-                this.Size = new Size(this.Size.Width, 170);
-                panel1.Location = new Point(panel1.Location.X, 55);
+                case 2:
+            
+                    cboTipo.Visible = true;
+                    cboTipo.SelectedIndex = 0;
+
+                    this.Size = new Size(this.Size.Width, 170);
+                    panel1.Location = new Point(panel1.Location.X, 55);
+                break;
+
+                case 4:
+
+                    lblSeq.Text = "Senha";
+                    txtSeq.PasswordChar = '*';
+                break;
+
+                case 99:
+            
+                    txtChave.Visible = true;
+                    lblMuda.Text = "Chave de acesso";
+                    this.Size = new Size(this.Size.Width, 170);
+                    panel1.Location = new Point(panel1.Location.X, 55);
+                break;
 
             }
+
             txtSeq.Select();
+        }
+
+        private void txtSeq_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)13)
+            {
+                btOk.PerformClick();
+            }
         }
     }
 }

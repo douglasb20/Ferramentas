@@ -55,6 +55,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pnlSQL = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.lblVersao = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlRP.SuspendLayout();
             this.pnlSQL.SuspendLayout();
@@ -292,7 +294,6 @@
             this.txtServer.Size = new System.Drawing.Size(227, 23);
             this.txtServer.TabIndex = 20;
             this.txtServer.Text = "localhost\\SQL2014";
-            this.txtServer.TextChanged += new System.EventHandler(this.txtServer_TextChanged);
             // 
             // btConect
             // 
@@ -351,7 +352,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(24, 154);
+            this.button1.Location = new System.Drawing.Point(24, 150);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 31);
             this.button1.TabIndex = 26;
@@ -367,7 +368,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(24, 194);
+            this.button2.Location = new System.Drawing.Point(24, 187);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(180, 45);
             this.button2.TabIndex = 27;
@@ -384,7 +385,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(24, 248);
+            this.button4.Location = new System.Drawing.Point(24, 238);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(180, 46);
             this.button4.TabIndex = 28;
@@ -394,6 +395,7 @@
             // 
             // pnlSQL
             // 
+            this.pnlSQL.Controls.Add(this.button5);
             this.pnlSQL.Controls.Add(this.txtServer);
             this.pnlSQL.Controls.Add(this.button4);
             this.pnlSQL.Controls.Add(this.label8);
@@ -408,12 +410,40 @@
             this.pnlSQL.Size = new System.Drawing.Size(230, 410);
             this.pnlSQL.TabIndex = 29;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.button5.Enabled = false;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button5.Location = new System.Drawing.Point(24, 290);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(180, 31);
+            this.button5.TabIndex = 29;
+            this.button5.Text = "Zera Registro";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // lblVersao
+            // 
+            this.lblVersao.AutoSize = true;
+            this.lblVersao.Font = new System.Drawing.Font("Segoe WP", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblVersao.Location = new System.Drawing.Point(429, 436);
+            this.lblVersao.Name = "lblVersao";
+            this.lblVersao.Size = new System.Drawing.Size(0, 19);
+            this.lblVersao.TabIndex = 30;
+            this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(480, 460);
+            this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.pnlRP);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -430,6 +460,7 @@
             this.pnlSQL.ResumeLayout(false);
             this.pnlSQL.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -462,6 +493,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel pnlSQL;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lblVersao;
     }
 }
 

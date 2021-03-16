@@ -38,3 +38,4 @@ C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\F
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\System.ValueTuple.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.frmAcao.resources
+C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csprojResolveAssemblyReference.cache
