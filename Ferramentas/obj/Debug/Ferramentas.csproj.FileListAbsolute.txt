@@ -7,15 +7,6 @@ c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj
 c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.GenerateResource.Cache
 c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.exe
 c:\users\cedet\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\log4net.dll
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.dll
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.dll
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.dll
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.WebSocket.dll
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\log4net.xml
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Common.xml
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.Facility.xml
-C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\SuperSocket.SocketBase.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\Ferramentas.exe.config
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.exe
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
@@ -39,3 +30,17 @@ C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\F
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\bin\Debug\System.ValueTuple.xml
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.frmAcao.resources
 C:\Users\Douglas.FAMILIA-PC\Google Drive\Automatec\Desenvolvimento\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csprojResolveAssemblyReference.cache
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\Npgsql.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Buffers.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Memory.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.ValueTuple.dll
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\Npgsql.pdb
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\Npgsql.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Buffers.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Memory.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.ValueTuple.xml
+C:\Users\CEDET\documents\visual studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.frmAcao.resources
