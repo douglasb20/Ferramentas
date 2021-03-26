@@ -57,15 +57,7 @@ namespace Ferramentas
             this.BackColor = Color.FromArgb(50,50,50);
             lblVersao.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-            try
-            {
-                checkServiceFirst("postgresql");
-            }catch(Exception err)
-            {
-                pnlRP.Enabled = false;
-                erroMsg(err,"1");
-
-            }
+            
 
         }
 
@@ -147,12 +139,15 @@ namespace Ferramentas
 
             try
             {
+
                 checkServiceFirst("postgresql");
                 setConnect(txtHost.Text, int.Parse( txtPorta.Text ), txtUser.Text, txtPass.Text, banco);
                 DataTable id = new DataTable();
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter("select id_fornecedor from fornecedor order by id_fornecedor desc limit 1 ", npg);
                 da.Fill(id);
+
+                if (id.Rows.Count == 0) throw new Exception("Não há nenhum fornecedor cadastrado.");
 
                 int id_fn = int.Parse(id.Rows[0]["id_fornecedor"].ToString());
 
@@ -246,7 +241,7 @@ namespace Ferramentas
                 DataTable tabela = new DataTable();
                 string comando = "";
 
-                Object aTabela = "";
+                string aTabela = "";
 
                 cmd.CommandText = "Use ETrade";
                 cmd.ExecuteNonQuery();
@@ -269,10 +264,10 @@ namespace Ferramentas
                     da = new SqlDataAdapter(comando, sqlserver);
                     da.Fill(tabela);
 
-                    aTabela = tabela.Rows[0]["table_name"];
+                    aTabela = tabela.Rows[0]["table_name"].ToString();
                 }else
                 {
-                    aTabela = tabela.Rows[0]["table_name"];
+                    aTabela = tabela.Rows[0]["table_name"].ToString();
                 }
 
 
