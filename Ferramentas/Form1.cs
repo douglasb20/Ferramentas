@@ -349,8 +349,7 @@ namespace Ferramentas
                 cmd.CommandText = "Use ETrade";
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = @"update Configuracao set valor='' where config='lib' ";
-                //cmd.CommandText = @"update Configuracao set valor='' where config='lib' or config='reg' ";
+                cmd.CommandText = @"update Configuracao set Valor='' where Len(Valor) > 100 ";
                 cmd.ExecuteNonQuery();
 
                 //if( MessageBox.Show("Abra o sistema e quando tiver totalmente aberto, aperte OK para adicionar a imagem na filial.\n\nClicando em Cancelar finaliza a operação sem adicionar a imagem, porem fica um backup da imagem na pasta C:\\temp\\temp.jpg. \n\nSistema abriu totalmente? ", "Ferramentas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
