@@ -57,6 +57,9 @@
             this.pnlSQL = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.lblVersao = new System.Windows.Forms.Label();
+            this.btnTrust = new System.Windows.Forms.Button();
+            this.btnPrivate = new System.Windows.Forms.Button();
+            this.fbCaminho = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             this.pnlRP.SuspendLayout();
             this.pnlSQL.SuspendLayout();
@@ -148,7 +151,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(243, 45);
+            this.panel2.Location = new System.Drawing.Point(244, 45);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 400);
             this.panel2.TabIndex = 6;
@@ -165,11 +168,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(36, 31);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 21);
+            this.label4.Size = new System.Drawing.Size(53, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "HOST";
             // 
@@ -203,33 +206,33 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label5.Location = new System.Drawing.Point(36, 76);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 21);
+            this.label5.Size = new System.Drawing.Size(63, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "PORTA";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label6.Location = new System.Drawing.Point(36, 166);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 21);
+            this.label6.Size = new System.Drawing.Size(65, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "SENHA";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label7.Location = new System.Drawing.Point(36, 121);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 21);
+            this.label7.Size = new System.Drawing.Size(84, 20);
             this.label7.TabIndex = 14;
             this.label7.Text = "USUARIO";
             // 
@@ -277,11 +280,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label8.Location = new System.Drawing.Point(5, 7);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 21);
+            this.label8.Size = new System.Drawing.Size(95, 20);
             this.label8.TabIndex = 21;
             this.label8.Text = "SERVIDOR";
             // 
@@ -311,6 +314,8 @@
             // 
             // pnlRP
             // 
+            this.pnlRP.Controls.Add(this.btnPrivate);
+            this.pnlRP.Controls.Add(this.btnTrust);
             this.pnlRP.Controls.Add(this.rdLeStore);
             this.pnlRP.Controls.Add(this.txtHost);
             this.pnlRP.Controls.Add(this.label4);
@@ -324,7 +329,7 @@
             this.pnlRP.Controls.Add(this.label6);
             this.pnlRP.Location = new System.Drawing.Point(252, 46);
             this.pnlRP.Name = "pnlRP";
-            this.pnlRP.Size = new System.Drawing.Size(216, 312);
+            this.pnlRP.Size = new System.Drawing.Size(216, 352);
             this.pnlRP.TabIndex = 23;
             // 
             // button3
@@ -428,13 +433,50 @@
             // lblVersao
             // 
             this.lblVersao.AutoSize = true;
-            this.lblVersao.Font = new System.Drawing.Font("Segoe WP", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblVersao.Location = new System.Drawing.Point(429, 436);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(0, 19);
+            this.lblVersao.Size = new System.Drawing.Size(0, 17);
             this.lblVersao.TabIndex = 30;
             this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnTrust
+            // 
+            this.btnTrust.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.btnTrust.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.btnTrust.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrust.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTrust.Location = new System.Drawing.Point(21, 268);
+            this.btnTrust.Name = "btnTrust";
+            this.btnTrust.Size = new System.Drawing.Size(180, 31);
+            this.btnTrust.TabIndex = 20;
+            this.btnTrust.Text = "Modo Senha Livre";
+            this.btnTrust.UseVisualStyleBackColor = false;
+            this.btnTrust.Click += new System.EventHandler(this.btnTrust_Click);
+            // 
+            // btnPrivate
+            // 
+            this.btnPrivate.AccessibleDescription = "";
+            this.btnPrivate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(80)))), ((int)(((byte)(110)))));
+            this.btnPrivate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(110)))), ((int)(((byte)(155)))));
+            this.btnPrivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrivate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPrivate.Location = new System.Drawing.Point(21, 305);
+            this.btnPrivate.Name = "btnPrivate";
+            this.btnPrivate.Size = new System.Drawing.Size(180, 31);
+            this.btnPrivate.TabIndex = 21;
+            this.btnPrivate.Tag = "Teste";
+            this.btnPrivate.Text = "Modo Restrito";
+            this.btnPrivate.UseVisualStyleBackColor = false;
+            this.btnPrivate.Click += new System.EventHandler(this.btnPrivate_Click);
+            // 
+            // fbCaminho
+            // 
+            this.fbCaminho.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.fbCaminho.ShowNewFolderButton = false;
             // 
             // Form1
             // 
@@ -494,6 +536,9 @@
         private System.Windows.Forms.Panel pnlSQL;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblVersao;
+        private System.Windows.Forms.Button btnPrivate;
+        private System.Windows.Forms.Button btnTrust;
+        private System.Windows.Forms.FolderBrowserDialog fbCaminho;
     }
 }
 

@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using Npgsql;
-using System.ServiceProcess;
-using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.ServiceProcess;
+using System.Windows.Forms;
 
 namespace Ferramentas
 {
@@ -23,6 +24,7 @@ namespace Ferramentas
         public static NpgsqlConnection npg;
         public static int status;
         public static string msgError;
+        private static string pgCaminho;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -54,10 +56,8 @@ namespace Ferramentas
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(50,50,50);
+            this.BackColor = Color.FromArgb(50, 50, 50);
             lblVersao.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-            
 
         }
 
@@ -123,13 +123,13 @@ namespace Ferramentas
                     MessageBox.Show("Executado com sucesso.\nVerifique se o banco de dados foi corrigido.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 erroMsg(err);
                 btSuspect.Enabled = true;
             }
         }
-        
+
         private void button3_Click(object sender, EventArgs e)
         {
             var banco = "";
@@ -141,7 +141,7 @@ namespace Ferramentas
             {
 
                 checkServiceFirst("postgresql");
-                setConnect(txtHost.Text, int.Parse( txtPorta.Text ), txtUser.Text, txtPass.Text, banco);
+                setConnect(txtHost.Text, int.Parse(txtPorta.Text), txtUser.Text, txtPass.Text, banco);
                 DataTable id = new DataTable();
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter("select id_fornecedor from fornecedor order by id_fornecedor desc limit 1 ", npg);
@@ -155,13 +155,13 @@ namespace Ferramentas
                 cmd.CommandText = "ALTER SEQUENCE fornecedor_id_fornecedor_seq RESTART WITH " + (id_fn + 1);
                 cmd.ExecuteNonQuery();
 
-                if (status == 1) MessageBox.Show("Próximo ID de fornecedor será " + (id_fn +1), "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk );
+                if (status == 1) MessageBox.Show("Próximo ID de fornecedor será " + (id_fn + 1), "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 erroMsg(err);
             }
-            
+
 
         }
 
@@ -192,7 +192,8 @@ namespace Ferramentas
                     btConect.Enabled = true;
                 }
 
-            }catch(Exception err)
+            }
+            catch (Exception err)
             {
                 erroMsg(err);
             }
@@ -210,9 +211,9 @@ namespace Ferramentas
 
                     pnlRP.Enabled = true;
                 }
-                catch(Exception err)
+                catch (Exception err)
                 {
-                    
+                    erroMsg(err);
                 }
                 finally
                 {
@@ -232,7 +233,6 @@ namespace Ferramentas
 
         }
 
-        
         private void btCest_Click(object sender, EventArgs e)
         {
             try
@@ -253,8 +253,8 @@ namespace Ferramentas
 
                 SqlDataAdapter da = new SqlDataAdapter(comando, sqlserver);
                 da.Fill(tabela);
-                
-                if(tabela.Rows.Count == 0)
+
+                if (tabela.Rows.Count == 0)
                 {
                     comando += "select schema_name(t.schema_id) as schema_name, t.name as table_name, t.create_date, t.modify_date ";
                     comando += "from sys.tables t ";
@@ -265,7 +265,8 @@ namespace Ferramentas
                     da.Fill(tabela);
 
                     aTabela = tabela.Rows[0]["table_name"].ToString();
-                }else
+                }
+                else
                 {
                     aTabela = tabela.Rows[0]["table_name"].ToString();
                 }
@@ -279,11 +280,11 @@ namespace Ferramentas
 
                 msgSucesso();
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 erroMsg(err);
             }
-            
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -303,6 +304,7 @@ namespace Ferramentas
             frmAcao f2 = new frmAcao(3);
             f2.ShowDialog();
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             try
@@ -310,7 +312,8 @@ namespace Ferramentas
 
                 frmAcao f2 = new frmAcao(4);
                 f2.ShowDialog();
-            }catch(Exception err)
+            }
+            catch (Exception err)
             {
                 erroMsg(err);
             }
@@ -322,6 +325,7 @@ namespace Ferramentas
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
         public void setConnect(string host, int porta, string user, string pass, string banco)
         {
             status = 1;
@@ -339,6 +343,7 @@ namespace Ferramentas
             }
 
         }
+
         public void zeraReg()
         {
             try
@@ -366,6 +371,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public void retiraVinculo(string sequencia)
         {
             try
@@ -385,6 +391,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public void checkServiceFirst(string svr)
         {
             ServiceController[] services = ServiceController.GetServices();
@@ -400,6 +407,7 @@ namespace Ferramentas
                 }
             }
         }
+
         public bool setConnVR(string host, string banco = "ETrade")
         {
             msgError = "";
@@ -419,6 +427,7 @@ namespace Ferramentas
                 return false;
             }
         }
+
         public void mudaNfce(string sequencia, int tipo)
         {
             try
@@ -448,6 +457,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public string nomeServico(string texto)
         {
             string[] separado;
@@ -463,6 +473,7 @@ namespace Ferramentas
 
             return texto;
         }
+
         public void erroDecimais(string sequencia)
         {
 
@@ -483,6 +494,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public void msgSucesso()
         {
             MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -501,6 +513,7 @@ namespace Ferramentas
                 MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public DataTable GetImagesFromDatabase(string query)
         {
             if (string.IsNullOrEmpty(query))
@@ -521,6 +534,7 @@ namespace Ferramentas
 
             return result;
         }
+
         public void ExportImagesFromDatabase()
         {
             var exportPath = @"C:\Temp";
@@ -553,6 +567,124 @@ namespace Ferramentas
             }
         }
 
-       
+        private void btnTrust_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                definirCaminhoPG();
+
+                if(MessageBox.Show("Deseja realmente desbloquear o Postgre para entrar com qualquer senha?","Confirma Ação",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string pathHBA = pgCaminho + @"\data\pg_hba.conf";
+                    string[] allLines = File.ReadAllLines(pathHBA);
+                    string content = string.Empty;
+
+
+                    for(int i = 0;i < allLines.Length;i++)
+                    {
+                        if ( !allLines[i].StartsWith("#") || !String.IsNullOrEmpty( allLines[i] ) ){
+
+                            var replaced = allLines[i].Replace("scram-sha-256", "trust");
+                            replaced = replaced.Replace("md5", "trust");
+                            content += replaced;
+                        }
+                        else
+                        {
+                            content += allLines[i];
+                        }
+                        content += "\r\n";
+                    }
+
+                    using (StreamWriter writer = new StreamWriter(pathHBA))
+                    {
+                        writer.Write(content);
+                        writer.Close();
+                    }
+
+                    msgSucesso();
+                }
+
+            }
+            catch (Exception er)
+            {
+                erroMsg(er, "1");
+            }
+        }
+
+        private void btnPrivate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                definirCaminhoPG();
+                if (MessageBox.Show("Deseja realmente bloquear o Postgre para entrar com qualquer senha?", "Confirma Ação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string pathHBA = pgCaminho + @"\data\pg_hba.conf";
+                    string[] allLines = File.ReadAllLines(pathHBA);
+                    string content = string.Empty;
+
+                    for (int i = 0; i < allLines.Length; i++)
+                    {
+                        if (!allLines[i].StartsWith("#") || !String.IsNullOrEmpty(allLines[i]))
+                        {
+                            var replaced = allLines[i].Replace("trust", "md5");
+                            content += replaced;
+                        }
+                        else
+                        {
+                            content += allLines[i];
+                        }
+                        content += "\r\n";
+                    }
+
+                    using (StreamWriter writer = new StreamWriter(pathHBA))
+                    {
+                        writer.Write(content);
+                        writer.Close();
+                    }
+
+                    msgSucesso();
+                }
+                else
+                {
+                    MessageBox.Show("Show");
+                }
+            }
+            catch(Exception er)
+            {
+                erroMsg(er,"1");
+            }
+        }
+
+        private void definirCaminhoPG()
+        {
+            try
+            {
+                if(String.IsNullOrEmpty( pgCaminho ))
+                {
+                    if(MessageBox.Show("Por favor, selecione a pasta da versão do postgre que deseja executar a ação.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information ) == DialogResult.OK)
+                    {
+                        if (fbCaminho.ShowDialog() == DialogResult.OK)
+                        {
+                            pgCaminho = fbCaminho.SelectedPath;
+                            if (!Directory.Exists(pgCaminho + @"\bin") && !Directory.Exists(pgCaminho + @"\data"))
+                            {
+                                fbCaminho.Dispose();
+                                pgCaminho = "";
+                                throw new Exception("Faltam as pastas Bin e data");
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("Cancelado.");
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

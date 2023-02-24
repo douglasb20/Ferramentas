@@ -60,10 +60,13 @@ C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferra
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\bin\Debug\System.ValueTuple.xml
-C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csprojResolveAssemblyReference.cache
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Form1.resources
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.frmAcao.resources
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.Properties.Resources.resources
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.GenerateResource.Cache
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.exe
 C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.pdb
+C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.AssemblyReference.cache
+C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.SuggestedBindingRedirects.cache
+C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.CoreCompileInputs.cache
+C:\Users\DGPla\OneDrive\Documentos\Visual Studio 2015\Projects\Ferramentas\Ferramentas\obj\Debug\Ferramentas.csproj.CopyComplete
