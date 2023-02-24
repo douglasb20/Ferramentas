@@ -231,7 +231,6 @@ namespace Ferramentas
             }
 
         }
-
         
         private void btCest_Click(object sender, EventArgs e)
         {
@@ -303,6 +302,7 @@ namespace Ferramentas
             frmAcao f2 = new frmAcao(3);
             f2.ShowDialog();
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             try
@@ -322,6 +322,7 @@ namespace Ferramentas
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
         public void setConnect(string host, int porta, string user, string pass, string banco)
         {
             status = 1;
@@ -339,6 +340,7 @@ namespace Ferramentas
             }
 
         }
+
         public void zeraReg()
         {
             try
@@ -366,6 +368,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public void retiraVinculo(string sequencia)
         {
             try
@@ -385,6 +388,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public void checkServiceFirst(string svr)
         {
             ServiceController[] services = ServiceController.GetServices();
@@ -400,6 +404,7 @@ namespace Ferramentas
                 }
             }
         }
+
         public bool setConnVR(string host, string banco = "ETrade")
         {
             msgError = "";
@@ -419,6 +424,7 @@ namespace Ferramentas
                 return false;
             }
         }
+
         public void mudaNfce(string sequencia, int tipo)
         {
             try
@@ -448,6 +454,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public string nomeServico(string texto)
         {
             string[] separado;
@@ -463,6 +470,7 @@ namespace Ferramentas
 
             return texto;
         }
+
         public void erroDecimais(string sequencia)
         {
 
@@ -483,6 +491,7 @@ namespace Ferramentas
                 erroMsg(err);
             }
         }
+
         public void msgSucesso()
         {
             MessageBox.Show("Executado com sucesso.", "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -501,6 +510,7 @@ namespace Ferramentas
                 MessageBox.Show("Não foi possível executar a ação.\nMotivo: " + mesage.Message, "Ferramentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public DataTable GetImagesFromDatabase(string query)
         {
             if (string.IsNullOrEmpty(query))
@@ -521,6 +531,7 @@ namespace Ferramentas
 
             return result;
         }
+
         public void ExportImagesFromDatabase()
         {
             var exportPath = @"C:\Temp";
